@@ -11,6 +11,7 @@
 'use strict';
 
 var browserify = require('browserify');
+var aliasify = require('aliasify');
 var watchify = require('watchify');
 var bundleLogger = require('../util/bundleLogger');
 var gulp = require('gulp');
@@ -43,6 +44,9 @@ var browserifyTask = function(callback, devMode) {
             bundleLogger.start(bundleConfig.outputName);
 
             return b
+                .transform({
+                    global: true
+                }, aliasify)
                 .bundle()
                 // Report compile errors
                 .on('error', handleErrors)

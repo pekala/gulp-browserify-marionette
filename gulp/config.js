@@ -1,5 +1,5 @@
-var dest = './public';
-var src = './resources';
+var dest = './dist';
+var src = './src';
 
 module.exports = {
     sass: {
@@ -14,9 +14,9 @@ module.exports = {
         // A separate bundle could be generated for each
         // bundle config in the list below
         bundleConfigs: [{
-            entries: src + '/js/index.js',
+            entries: [src + '/js/marionette_shim.js', src + '/js/index.js'],
             dest: dest,
-            outputName: 'login_bundle.js',
+            outputName: 'admin_bundle.js',
             external: ['jquery']
         }]
     },
